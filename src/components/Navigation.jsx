@@ -4,9 +4,9 @@ import { Box, Flex } from "@chakra-ui/react";
 
 export const Navigation = () => {
   return (
-    <Box as="nav" bg="bg-surface" boxShadow="sm" h={"40px"}>
+    <Box as="nav" bg="bg-surface" boxShadow="xl" h={"40px"}>
       <ul>
-        <Flex margin={"20px"} justifyContent={"space-evenly"}>
+        <Flex margin={"15px"} justifyContent={"space-evenly"}>
           <li>
             <Link to="/">Events</Link>
           </li>
