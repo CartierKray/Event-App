@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   Heading,
   Image,
@@ -19,11 +18,6 @@ export const loader = async () => {
 
 export const EventsPage = () => {
   const { events, categories } = useLoaderData();
-
-  const getCategoryName = (categoryId) => {
-    const category = categories.find((cat) => cat.id === categoryId);
-    return category ? category.name : "";
-  };
 
   return (
     <Box p="6">
