@@ -33,27 +33,27 @@ export const EventsPage = () => {
             borderColor="gray.200"
             pb="6"
           >
+            <Image
+              src={event.image}
+              alt={event.title}
+              mb="4"
+              borderRadius="md"
+            />
             <Link to={`/event/${event.id}`}>
-              <Image
-                src={event.image}
-                alt={event.title}
-                mb="4"
-                borderRadius="md"
-              />
               <Heading as="h2" size="md">
                 {event.title}
               </Heading>
-              <Text color="gray.500" fontSize="sm" mb="3" mt="1">
-                Location: {event.location}
-              </Text>
-              <Text>{event.description}</Text>
-              <Text color="gray.500" fontSize="sm" mt="3">
-                Starts at: {new Date(event.startTime).toLocaleString()}
-              </Text>
-              <Text color="gray.500" fontSize="sm" mt="1">
-                End at: {new Date(event.endTime).toLocaleString()}
-              </Text>
             </Link>
+            <Text color="gray.500" fontSize="sm" mb="3" mt="1">
+              Location: {event.location}
+            </Text>
+            <Text>{event.description}</Text>
+            <Text color="gray.500" fontSize="sm" mt="3">
+              Starts at: {new Date(event.startTime).toLocaleString()}
+            </Text>
+            <Text color="gray.500" fontSize="sm" mt="1">
+              End at: {new Date(event.endTime).toLocaleString()}
+            </Text>
           </ListItem>
         ))}
         <AddEventButton />
