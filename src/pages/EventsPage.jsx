@@ -8,9 +8,11 @@ import {
   Tag,
   Text,
   Flex,
+  TagLeftIcon,
 } from "@chakra-ui/react";
 import { AddEventButton } from "../components/AddEventButton";
 import { useLoaderData } from "react-router-dom";
+import { AiFillTags } from "react-icons/ai";
 
 export const loader = async () => {
   const events = await fetch("http://localhost:3000/events");
@@ -63,6 +65,7 @@ export const EventsPage = () => {
               {categories.map((category) => (
                 <Box key={category.id} mt="4">
                   <Tag color="blue.500" fontSize="sm" bg="blue.100">
+                    <TagLeftIcon as={AiFillTags}></TagLeftIcon>
                     {category.name}
                   </Tag>
                 </Box>
