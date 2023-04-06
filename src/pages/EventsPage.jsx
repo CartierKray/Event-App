@@ -59,15 +59,10 @@ export const EventsPage = () => {
             <Text color="gray.500" fontSize="sm" mt="3">
               Category:
             </Text>
-            <Flex>
+            <Flex gap={2}>
               {categories.map((category) => (
                 <Box key={category.id} mt="4">
-                  <Tag
-                    color="blue.500"
-                    fontSize="sm"
-                    bg="blue.100"
-                    marginLeft={"5px"}
-                  >
+                  <Tag color="blue.500" fontSize="sm" bg="blue.100">
                     {category.name}
                   </Tag>
                 </Box>
