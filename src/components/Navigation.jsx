@@ -1,20 +1,18 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, List } from "@chakra-ui/react";
 
 export const Navigation = () => {
   return (
     <Box as="nav" bg="bg-surface" boxShadow="xl" h={"40px"}>
-      <ul>
-        <Flex margin={"15px"} justifyContent={"space-evenly"}>
-          <li>
-            <Link to="/">Events</Link>
-          </li>
-          <li>
-            <Link to="/event/1">Event</Link>
-          </li>
-        </Flex>
-      </ul>
+      <Flex margin={"15px"} justifyContent={"space-evenly"}>
+        <List>
+          <Link to="/">Events</Link>
+        </List>
+        <List>
+          <Link to="/event/1">Event</Link>
+        </List>
+      </Flex>
     </Box>
   );
 };
