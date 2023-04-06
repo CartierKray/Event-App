@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
 export const Navigation = () => {
   return (
-    <nav>
+    <Box as="nav" bg="bg-surface" boxShadow="sm" h={"40px"}>
       <ul>
         <Flex margin={"20px"} justifyContent={"space-evenly"}>
           <li>
@@ -15,6 +15,6 @@ export const Navigation = () => {
           </li>
         </Flex>
       </ul>
-    </nav>
+    </Box>
   );
 };
