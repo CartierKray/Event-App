@@ -13,7 +13,7 @@ import { useLoaderData } from "react-router-dom";
 export const loader = async () => {
   const events = await fetch("http://localhost:3000/events");
   const categories = await fetch("http://localhost:3000/categories");
-  console.log(events);
+
   return { events: await events.json(), categories: await categories.json() };
 };
 
