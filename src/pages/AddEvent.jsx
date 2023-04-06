@@ -58,7 +58,7 @@ export const AddEvent = () => {
             backgroundColor={"blackAlpha.300"}
             color={"red"}
             _hover={{ backgroundColor: "grey", color: "lime" }}
-            mt="6"
+            mt="10"
             type="submit"
           >
             Submit !
