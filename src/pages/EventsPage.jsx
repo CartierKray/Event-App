@@ -5,7 +5,9 @@ import {
   Link,
   List,
   ListItem,
+  Tag,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 import { AddEventButton } from "../components/AddEventButton";
 import { useLoaderData } from "react-router-dom";
@@ -54,6 +56,23 @@ export const EventsPage = () => {
             <Text color="gray.500" fontSize="sm" mt="1">
               End at: {new Date(event.endTime).toLocaleString()}
             </Text>
+            <Text color="gray.500" fontSize="sm" mt="3">
+              Category:
+            </Text>
+            <Flex>
+              {categories.map((category) => (
+                <Box key={category.id} mt="4">
+                  <Tag
+                    color="blue.500"
+                    fontSize="sm"
+                    bg="blue.100"
+                    marginLeft={"5px"}
+                  >
+                    {category.name}
+                  </Tag>
+                </Box>
+              ))}
+            </Flex>
           </ListItem>
         ))}
         <AddEventButton />
