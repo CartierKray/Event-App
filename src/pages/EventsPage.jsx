@@ -1,4 +1,12 @@
-import { Heading, Image, Link, List, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Image,
+  Link,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 import { useLoaderData } from "react-router-dom";
 
 export const loader = async () => {
@@ -12,22 +20,57 @@ export const EventsPage = () => {
   const { events, categories } = useLoaderData();
 
   return (
-    <div>
-      <Heading>Events List</Heading>
-      {events.map((event) => (
-        <List key={event.id}>
-          <Link to={"/event/:eventId"}></Link>
-          <Heading>Title: {event.title}</Heading>
-          <Text>Description: {event.description}</Text>
-          <Image src={event.image} alt={event.image}></Image>
-          <Text>Location : {event.location}</Text>
-          <Text>StartTime : {event.startTime}</Text>
-          <Text>Endtime : {event.endTime}</Text>
-        </List>
-      ))}
-      {categories.map((categorie) => (
-        <List key={categorie.id}>{categorie.name}</List>
-      ))}
-    </div>
+    <Box p="6">
+      <Heading as="h1" size="xl" mb="6">
+        Events List
+      </Heading>
+      <List spacing="6">
+        {events.map((event) => (
+          <ListItem
+            key={event.id}
+            borderBottomWidth="1px"
+            borderColor="gray.200"
+            pb="6"
+          >
+            <Link to={`/event/${event.id}`}>
+              <Image
+                src={event.image}
+                alt={event.title}
+                mb="4"
+                borderRadius="md"
+              />
+              <Heading as="h2" size="md">
+                {event.title}
+              </Heading>
+              <Text color="gray.500" fontSize="sm" mb="2">
+                Location: {event.location}
+              </Text>
+              <Text>{event.description}</Text>
+              <Text color="gray.500" fontSize="sm" mt="4">
+                Starts at: {new Date(event.startTime).toLocaleString()}
+              </Text>
+              <Text color="gray.500" fontSize="sm" mt="4">
+                End at: {new Date(event.endTime).toLocaleString()}
+              </Text>
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+      <List mt="12">
+        <Heading as="h2" size="md" mb="4">
+          Categories
+        </Heading>
+        {categories.map((category) => (
+          <ListItem
+            key={category.id}
+            borderBottomWidth="1px"
+            borderColor="gray.200"
+            pb="2"
+          >
+            <Text>{category.name}</Text>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 };
