@@ -70,7 +70,10 @@ export const EventsPage = () => {
             </Flex>
           </ListItem>
         ))}
+
         <AddEventButton />
+
+        <ListItem borderBottomWidth="1px" borderColor="gray.200"></ListItem>
       </List>
     </Box>
   );

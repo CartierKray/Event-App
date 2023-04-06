@@ -62,6 +62,7 @@ export const AddEvent = () => {
               </FormLabel>
               <Input width={"300px"} type="datetime-local"></Input>
             </Form>
+
             <Center>
               <Button
                 backgroundColor={"blackAlpha.300"}
