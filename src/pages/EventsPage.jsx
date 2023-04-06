@@ -50,7 +50,7 @@ export const EventsPage = () => {
               <Text color="gray.500" fontSize="sm" mt="3">
                 Starts at: {new Date(event.startTime).toLocaleString()}
               </Text>
-              <Text color="gray.500" fontSize="sm" mt="3">
+              <Text color="gray.500" fontSize="sm" mt="1">
                 End at: {new Date(event.endTime).toLocaleString()}
               </Text>
             </Link>

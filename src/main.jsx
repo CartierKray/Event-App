@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import { EventPage } from "./pages/EventPage";
 import { EventsPage, loader as eventListLoader } from "./pages/EventsPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
         // action: addComment,
       },
       {
-        path: "/add-event",
+        path: "/add/event",
         element: <AddEvent />,
       },
     ],

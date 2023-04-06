@@ -3,8 +3,10 @@ import React from "react";
 
 export const AddEvent = () => {
   return (
-    <Box>
-      <Heading>Add Events Here</Heading>
+    <Box p={"6"}>
+      <Heading as="h1" size="xl" mb="6">
+        Add Events
+      </Heading>
     </Box>
   );
 };
