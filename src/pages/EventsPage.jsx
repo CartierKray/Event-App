@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Heading,
   Image,
@@ -18,6 +19,11 @@ export const loader = async () => {
 
 export const EventsPage = () => {
   const { events, categories } = useLoaderData();
+
+  const getCategoryName = (categoryId) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category ? category.name : "";
+  };
 
   return (
     <Box p="6">
@@ -42,32 +48,17 @@ export const EventsPage = () => {
               <Heading as="h2" size="md">
                 {event.title}
               </Heading>
-              <Text color="gray.500" fontSize="sm" mb="2">
+              <Text color="gray.500" fontSize="sm" mb="3" mt="1">
                 Location: {event.location}
               </Text>
               <Text>{event.description}</Text>
-              <Text color="gray.500" fontSize="sm" mt="4">
+              <Text color="gray.500" fontSize="sm" mt="3">
                 Starts at: {new Date(event.startTime).toLocaleString()}
               </Text>
-              <Text color="gray.500" fontSize="sm" mt="4">
+              <Text color="gray.500" fontSize="sm" mt="3">
                 End at: {new Date(event.endTime).toLocaleString()}
               </Text>
             </Link>
-          </ListItem>
-        ))}
-      </List>
-      <List mt="12">
-        <Heading as="h2" size="md" mb="4">
-          Categories
-        </Heading>
-        {categories.map((category) => (
-          <ListItem
-            key={category.id}
-            borderBottomWidth="1px"
-            borderColor="gray.200"
-            pb="2"
-          >
-            <Text>{category.name}</Text>
           </ListItem>
         ))}
       </List>
