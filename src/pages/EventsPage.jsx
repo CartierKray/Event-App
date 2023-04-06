@@ -58,18 +58,18 @@ export const EventsPage = () => {
             <Text color="gray.500" fontSize="sm" mt="1">
               End at: {new Date(event.endTime).toLocaleString()}
             </Text>
-            <Text color="gray.500" fontSize="sm" mt="3">
+            <Flex gap={2} color="gray.500" fontSize="sm" mt="3">
               Category:
-            </Text>
-            <Flex gap={2}>
-              {categories.map((category) => (
-                <Box key={category.id} mt="4">
-                  <Tag color="blue.500" fontSize="sm" bg="blue.100">
-                    <TagLeftIcon as={AiFillTags}></TagLeftIcon>
-                    {category.name}
-                  </Tag>
-                </Box>
-              ))}
+              <Flex gap={2}>
+                {categories.map((category) => (
+                  <Box key={category.id}>
+                    <Tag color="blue.500" fontSize="sm" bg="blue.100">
+                      <TagLeftIcon as={AiFillTags}></TagLeftIcon>
+                      {category.name}
+                    </Tag>
+                  </Box>
+                ))}
+              </Flex>
             </Flex>
           </ListItem>
         ))}
