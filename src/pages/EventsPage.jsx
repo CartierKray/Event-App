@@ -7,7 +7,7 @@ import {
   ListItem,
   Text,
 } from "@chakra-ui/react";
-import { AddEvent } from "../components/AddEvent";
+import { AddEventButton } from "../components/AddEventButton";
 import { useLoaderData } from "react-router-dom";
 
 export const loader = async () => {
@@ -56,7 +56,7 @@ export const EventsPage = () => {
             </Link>
           </ListItem>
         ))}
-        <AddEvent />
+        <AddEventButton />
       </List>
     </Box>
   );
