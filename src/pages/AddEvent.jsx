@@ -14,7 +14,7 @@ export const AddEvent = () => {
     <Box p={"6"} mt={"6rem"}>
       <Center height={"100vh"}>
         <Heading as="h1" size="xl" mb="6">
-          Add Events
+          Add Your Event Here !
           <Box height={"100vh"}>
             <Form>
               <FormLabel
@@ -26,7 +26,7 @@ export const AddEvent = () => {
                 Title
               </FormLabel>
               <Input
-                placeholder={"Add the event title.."}
+                placeholder={"Add event title.."}
                 width={"300px"}
                 type="text"
               ></Input>
@@ -39,7 +39,7 @@ export const AddEvent = () => {
                 Location
               </FormLabel>
               <Input
-                placeholder={"Add the event location.."}
+                placeholder={"Add event location.."}
                 width={"300px"}
                 type="text"
               ></Input>
