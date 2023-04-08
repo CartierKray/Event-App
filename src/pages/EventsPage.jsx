@@ -66,7 +66,6 @@ export const EventsPage = () => {
                     <Tag color="blue.600" fontSize="sm" bg="blue.100">
                       <TagLeftIcon as={AiFillTags}></TagLeftIcon>
                       <Text textTransform={"uppercase"} fontSize={"10"}>
-                        {" "}
                         {category.name}
                       </Text>
                     </Tag>
