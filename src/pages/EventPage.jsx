@@ -45,7 +45,7 @@ export const EventPage = () => {
           <Flex gap={2}>
             {categories.map((category) => (
               <Box key={category.id}>
-                <Tag color="blue.600" fontSize="sm" bg="blue.100">
+                <Tag color="teal.700" fontSize="sm" bg="teal.200">
                   <TagLeftIcon as={AiFillTags}></TagLeftIcon>
                   <Text textTransform={"uppercase"} fontSize={"10"}>
                     {" "}
