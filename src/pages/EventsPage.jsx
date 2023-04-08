@@ -31,7 +31,7 @@ export const EventsPage = () => {
       </Heading>
       <List spacing="6">
         {events.map((event) => (
-          <ListItem
+          <Text
             key={event.id}
             borderBottomWidth="1px"
             borderColor="gray.200"
@@ -74,7 +74,7 @@ export const EventsPage = () => {
                 ))}
               </Flex>
             </Flex>
-          </ListItem>
+          </Text>
         ))}
 
         <AddEventButton />
