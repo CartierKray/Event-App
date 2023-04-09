@@ -1,127 +1,140 @@
+import React, { useState } from "react";
 import {
-  Button,
+  Heading,
+  Box,
+  FormControl,
   FormLabel,
   Input,
-  Flex,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
+  Textarea,
+  Button,
   useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
 } from "@chakra-ui/react";
-
-import { Form } from "react-router-dom";
 
 export const AddEvent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [categoryIds, setCategoryIds] = useState([]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("http://localhost:3000/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        location,
+        startTime,
+        endTime,
+        categoryIds,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
+  };
 
   return (
-    <>
-      <Flex justifyContent={"center"} color={"red"}>
-        <Button
-          onClick={onOpen}
-          backgroundColor={"blackAlpha.300"}
-          color={"red"}
-          _hover={{ backgroundColor: "grey", color: "lime" }}
-        >
-          Add Event!
-        </Button>
-      </Flex>
-
-      <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Box p={"6"}>
+      <Heading as="h1" size="xl" mb="6">
+        Add Event
+      </Heading>
+      <Button onClick={onOpen} mb="4">
+        Add Event
+      </Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Add Your Event Here !</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <Form>
-              <FormLabel
-                mt="12"
-                fontFamily={"fantasy"}
-                fontSize={"20px"}
-                fontWeight={"bold"}
-              >
-                Title
-              </FormLabel>
-              <Input
-                placeholder={"Add event title.."}
-                width={"300px"}
-                type="text"
-                name="text"
-              ></Input>
-              <FormLabel
-                mt="8"
-                fontFamily={"fantasy"}
-                fontSize={"20px"}
-                fontWeight={"bold"}
-              >
-                Location
-              </FormLabel>
-              <Input
-                placeholder={"Add event location.."}
-                width={"300px"}
-                type="text"
-                name="Location"
-              ></Input>
-              <FormLabel
-                mt="8"
-                fontFamily={"fantasy"}
-                fontSize={"20px"}
-                fontWeight={"bold"}
-              >
-                Date & Start Time
-              </FormLabel>
-              <Input width={"300px"} name="date" type="datetime-local"></Input>
-              <FormLabel
-                mt="8"
-                fontFamily={"fantasy"}
-                fontSize={"20px"}
-                fontWeight={"bold"}
-              >
-                Date & End time
-              </FormLabel>
-              <Input width={"300px"} name="date" type="datetime-local"></Input>
-              <FormLabel
-                mt="12"
-                fontFamily={"fantasy"}
-                fontSize={"20px"}
-                fontWeight={"bold"}
-              >
-                Image
-              </FormLabel>
-              <Input
-                placeholder={"Add event title.."}
-                width={"300px"}
-                type="file"
-                name="image"
-              ></Input>
-            </Form>
+          <ModalHeader>Add Event</ModalHeader>
+          <ModalBody>
+            <form onSubmit={handleSubmit}>
+              <FormControl>
+                <FormLabel>Title</FormLabel>
+                <Input
+                  type="text"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Location</FormLabel>
+                <Input
+                  type="text"
+                  value={location}
+                  onChange={(event) => setLocation(event.target.value)}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Start Time</FormLabel>
+                <Input
+                  type="datetime-local"
+                  value={startTime}
+                  onChange={(event) => setStartTime(event.target.value)}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>End Time</FormLabel>
+                <Input
+                  type="datetime-local"
+                  value={endTime}
+                  onChange={(event) => setEndTime(event.target.value)}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Category</FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Category IDs separated by commas"
+                  value={categoryIds}
+                  onChange={(event) =>
+                    setCategoryIds(
+                      event.target.value.split(",").map((id) => id.trim())
+                    )
+                  }
+                />
+              </FormControl>
+              <ModalFooter>
+                <Button
+                  backgroundColor={"blackAlpha.300"}
+                  color={"red"}
+                  _hover={{ backgroundColor: "grey", color: "lime" }}
+                  mr={3}
+                  onClick={onClose}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  backgroundColor={"blackAlpha.300"}
+                  color={"red"}
+                  _hover={{ backgroundColor: "grey", color: "lime" }}
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </ModalFooter>
+            </form>
           </ModalBody>
-
-          <ModalFooter>
-            <Button
-              backgroundColor={"blackAlpha.300"}
-              color={"red"}
-              _hover={{ backgroundColor: "grey", color: "lime" }}
-              mr={3}
-              onClick={onClose}
-            >
-              Cancel
-            </Button>
-            <Button
-              backgroundColor={"blackAlpha.300"}
-              color={"red"}
-              _hover={{ backgroundColor: "grey", color: "lime" }}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </Box>
   );
 };
