@@ -1,21 +1,42 @@
 import {
-  Box,
   Button,
   FormLabel,
-  Heading,
   Input,
-  Center,
+  Flex,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { Form } from "react-router-dom";
 
 export const AddEvent = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Box p={"6"} mt={"6rem"}>
-      <Center height={"100vh"}>
-        <Heading as="h1" size="xl" mb="6">
-          Add Your Event Here !
-          <Box height={"100vh"}>
+    <>
+      <Flex justifyContent={"center"} color={"red"}>
+        <Button
+          onClick={onOpen}
+          backgroundColor={"blackAlpha.300"}
+          color={"red"}
+          _hover={{ backgroundColor: "grey", color: "lime" }}
+        >
+          Add Event!
+        </Button>
+      </Flex>
+
+      <Modal isOpen={isOpen} onClose={onClose} size="xl">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add Your Event Here !</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
             <Form>
               <FormLabel
                 mt="12"
@@ -62,21 +83,29 @@ export const AddEvent = () => {
               </FormLabel>
               <Input width={"300px"} type="datetime-local"></Input>
             </Form>
+          </ModalBody>
 
-            <Center>
-              <Button
-                backgroundColor={"blackAlpha.300"}
-                color={"red"}
-                _hover={{ backgroundColor: "grey", color: "lime" }}
-                mt="10"
-                type="submit"
-              >
-                Submit !
-              </Button>
-            </Center>
-          </Box>
-        </Heading>
-      </Center>
-    </Box>
+          <ModalFooter>
+            <Button
+              backgroundColor={"blackAlpha.300"}
+              color={"red"}
+              _hover={{ backgroundColor: "grey", color: "lime" }}
+              mr={3}
+              onClick={onClose}
+            >
+              Cancel
+            </Button>
+            <Button
+              backgroundColor={"blackAlpha.300"}
+              color={"red"}
+              _hover={{ backgroundColor: "grey", color: "lime" }}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };

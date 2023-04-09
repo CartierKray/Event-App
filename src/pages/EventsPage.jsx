@@ -10,9 +10,9 @@ import {
   Flex,
   TagLeftIcon,
 } from "@chakra-ui/react";
-import { AddEventButton } from "../components/AddEventButton";
 import { useLoaderData } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
+import { AddEvent } from "./AddEvent";
 
 export const loader = async () => {
   const events = await fetch("http://localhost:3000/events");
@@ -78,7 +78,7 @@ export const EventsPage = () => {
           </List>
         ))}
 
-        <AddEventButton />
+        <AddEvent />
 
         <ListItem borderBottomWidth="1px" borderColor="gray.200"></ListItem>
       </List>
