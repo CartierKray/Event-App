@@ -87,20 +87,20 @@ export const AddEvent = () => {
                 />
               </FormControl>
               <FormControl mt={4}>
-                <FormLabel>Description</FormLabel>
-                <Textarea
-                  value={description}
-                  placeholder="Description.."
-                  onChange={(event) => setDescription(event.target.value)}
-                />
-              </FormControl>
-              <FormControl mt={4}>
                 <FormLabel>Location</FormLabel>
                 <Input
                   placeholder="Location"
                   type="text"
                   value={location}
                   onChange={(event) => setLocation(event.target.value)}
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  value={description}
+                  placeholder="Description.."
+                  onChange={(event) => setDescription(event.target.value)}
                 />
               </FormControl>
               <FormControl mt={4}>
