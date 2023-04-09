@@ -12,7 +12,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+
 import { Form } from "react-router-dom";
 
 export const AddEvent = () => {
@@ -50,6 +50,7 @@ export const AddEvent = () => {
                 placeholder={"Add event title.."}
                 width={"300px"}
                 type="text"
+                name="text"
               ></Input>
               <FormLabel
                 mt="8"
@@ -63,6 +64,7 @@ export const AddEvent = () => {
                 placeholder={"Add event location.."}
                 width={"300px"}
                 type="text"
+                name="Location"
               ></Input>
               <FormLabel
                 mt="8"
@@ -72,7 +74,7 @@ export const AddEvent = () => {
               >
                 Date & Start Time
               </FormLabel>
-              <Input width={"300px"} type="datetime-local"></Input>
+              <Input width={"300px"} name="date" type="datetime-local"></Input>
               <FormLabel
                 mt="8"
                 fontFamily={"fantasy"}
@@ -81,7 +83,7 @@ export const AddEvent = () => {
               >
                 Date & End time
               </FormLabel>
-              <Input width={"300px"} type="datetime-local"></Input>
+              <Input width={"300px"} name="date" type="datetime-local"></Input>
               <FormLabel
                 mt="12"
                 fontFamily={"fantasy"}
@@ -94,6 +96,7 @@ export const AddEvent = () => {
                 placeholder={"Add event title.."}
                 width={"300px"}
                 type="file"
+                name="image"
               ></Input>
             </Form>
           </ModalBody>
