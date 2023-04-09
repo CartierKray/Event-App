@@ -45,8 +45,9 @@ export const AddEvent = () => {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+
     toast({
-      title: "Event added.",
+      title: "Event added succesfully.",
       status: "success",
       duration: 3000,
       isClosable: true,
