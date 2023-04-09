@@ -46,6 +46,7 @@ export const AddEvent = () => {
               >
                 Title
               </FormLabel>
+
               <Input
                 placeholder={"Add event title.."}
                 width={"300px"}
@@ -82,6 +83,20 @@ export const AddEvent = () => {
                 Date & End time
               </FormLabel>
               <Input width={"300px"} type="datetime-local"></Input>
+              <FormLabel
+                mt="12"
+                fontFamily={"fantasy"}
+                fontSize={"20px"}
+                fontWeight={"bold"}
+              >
+                Image
+              </FormLabel>
+
+              <Input
+                placeholder={"Add event title.."}
+                width={"300px"}
+                type="file"
+              ></Input>
             </Form>
           </ModalBody>
 
