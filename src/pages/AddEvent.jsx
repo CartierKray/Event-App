@@ -46,7 +46,6 @@ export const AddEvent = () => {
               >
                 Title
               </FormLabel>
-
               <Input
                 placeholder={"Add event title.."}
                 width={"300px"}
@@ -91,7 +90,6 @@ export const AddEvent = () => {
               >
                 Image
               </FormLabel>
-
               <Input
                 placeholder={"Add event title.."}
                 width={"300px"}
