@@ -12,18 +12,19 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
+  useToast,
 } from "@chakra-ui/react";
 
 export const AddEvent = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose, reset } = useDisclosure();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [categoryIds, setCategoryIds] = useState([]);
+  const toast = useToast();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,14 +45,22 @@ export const AddEvent = () => {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+    toast({
+      title: "Event added.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+    onClose();
+    reset();
   };
 
   return (
     <Box p={"6"}>
       <Heading as="h1" size="xl" mb="6">
-        Add Event
+        Add Your Event
       </Heading>
-      <Button onClick={onOpen} mb="4">
+      <Button onClick={onOpen} mb="4" colorScheme="teal">
         Add Event
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -112,25 +121,20 @@ export const AddEvent = () => {
                   }
                 />
               </FormControl>
-              <ModalFooter>
-                <Button
-                  backgroundColor={"blackAlpha.300"}
-                  color={"red"}
-                  _hover={{ backgroundColor: "grey", color: "lime" }}
-                  mr={3}
-                  onClick={onClose}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  backgroundColor={"blackAlpha.300"}
-                  color={"red"}
-                  _hover={{ backgroundColor: "grey", color: "lime" }}
-                  type="submit"
-                >
-                  Submit
-                </Button>
-              </ModalFooter>
+              <Button variant="outline" mt={8} type="submit">
+                Save
+              </Button>
+              <Button
+                variant="outline"
+                ml={4}
+                mt={8}
+                onClick={() => {
+                  onClose();
+                  reset();
+                }}
+              >
+                Cancel
+              </Button>
             </form>
           </ModalBody>
         </ModalContent>
