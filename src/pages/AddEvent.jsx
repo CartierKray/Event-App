@@ -14,6 +14,7 @@ import {
   ModalHeader,
   ModalBody,
   useToast,
+  Center,
 } from "@chakra-ui/react";
 
 export const AddEvent = () => {
@@ -24,6 +25,7 @@ export const AddEvent = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [categoryIds, setCategoryIds] = useState([]);
+
   const toast = useToast();
 
   const handleSubmit = (event) => {
@@ -58,12 +60,17 @@ export const AddEvent = () => {
 
   return (
     <Box p={"6"}>
-      <Heading as="h1" size="xl" mb="6">
-        Add Your Event
-      </Heading>
-      <Button onClick={onOpen} mb="4" colorScheme="teal">
-        Add Event
-      </Button>
+      <Center>
+        <Heading as="h1" size="xl" mb="6">
+          Add Your Event
+        </Heading>
+      </Center>
+      <Center>
+        <Button onClick={onOpen} mb="4" colorScheme="teal">
+          Add Event
+        </Button>
+      </Center>
+
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -75,6 +82,7 @@ export const AddEvent = () => {
                 <Input
                   type="text"
                   value={title}
+                  placeholder="Title"
                   onChange={(event) => setTitle(event.target.value)}
                 />
               </FormControl>
@@ -82,12 +90,14 @@ export const AddEvent = () => {
                 <FormLabel>Description</FormLabel>
                 <Textarea
                   value={description}
+                  placeholder="Description.."
                   onChange={(event) => setDescription(event.target.value)}
                 />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Location</FormLabel>
                 <Input
+                  placeholder="Location"
                   type="text"
                   value={location}
                   onChange={(event) => setLocation(event.target.value)}
@@ -113,7 +123,7 @@ export const AddEvent = () => {
                 <FormLabel>Category</FormLabel>
                 <Input
                   type="text"
-                  placeholder="Category IDs separated by commas"
+                  placeholder="Category ID"
                   value={categoryIds}
                   onChange={(event) =>
                     setCategoryIds(
@@ -122,13 +132,19 @@ export const AddEvent = () => {
                   }
                 />
               </FormControl>
-              <Button variant="outline" mt={8} type="submit">
+              <Button
+                variant="outline"
+                mt={8}
+                type="submit"
+                _hover={{ bg: "limegreen", color: "white" }}
+              >
                 Save
               </Button>
               <Button
                 variant="outline"
                 ml={4}
                 mt={8}
+                _hover={{ bg: "red", color: "white" }}
                 onClick={() => {
                   onClose();
                   reset();
