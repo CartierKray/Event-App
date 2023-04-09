@@ -61,16 +61,18 @@ export const EventsPage = () => {
             <Flex gap={2} color="gray.500" fontSize="sm" mt="3">
               Category:
               <Flex gap={2}>
-                {categories.map((category) => (
-                  <Box key={category.id}>
-                    <Tag color="teal.700" fontSize="sm" bg="teal.200">
-                      <TagLeftIcon as={AiFillTags}></TagLeftIcon>
-                      <Text textTransform={"uppercase"} fontSize={"10"}>
-                        {category.name}
-                      </Text>
-                    </Tag>
-                  </Box>
-                ))}
+                {categories
+                  .filter((category) => event.categoryIds.includes(category.id))
+                  .map((category) => (
+                    <Box key={category.id}>
+                      <Tag color="teal.700" fontSize="sm" bg="teal.200">
+                        <TagLeftIcon as={AiFillTags}></TagLeftIcon>
+                        <Text textTransform={"uppercase"} fontSize={"10"}>
+                          {category.name}
+                        </Text>
+                      </Tag>
+                    </Box>
+                  ))}
               </Flex>
             </Flex>
           </List>
