@@ -25,7 +25,6 @@ export const AddEvent = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [categoryIds, setCategoryIds] = useState([]);
-
   const toast = useToast();
 
   const handleSubmit = (event) => {
@@ -49,9 +48,9 @@ export const AddEvent = () => {
       .catch((error) => console.log(error));
 
     toast({
-      title: "Event added succesfully.",
+      title: "Event Added Succesfully.",
       status: "success",
-      duration: 3000,
+      duration: 5000,
       isClosable: true,
     });
     onClose();
