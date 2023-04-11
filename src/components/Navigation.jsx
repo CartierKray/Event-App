@@ -14,7 +14,7 @@ export const Navigation = () => {
               fontWeight={"bold"}
               _hover={{ color: "teal" }}
             >
-              Events
+              Events List
             </Text>
             <ListItem borderBottomWidth="1px" borderColor="gray.200"></ListItem>
           </Link>
