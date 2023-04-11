@@ -51,6 +51,7 @@ export const AddEvent = () => {
       title: "Event Added Succesfully.",
       status: "success",
       duration: 5000,
+      position: "top-right",
       isClosable: true,
     });
     onClose();
