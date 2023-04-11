@@ -33,7 +33,7 @@ export const EventFilter = ({ value, onChange }) => {
               _checked={{ bg: "white", color: "#1A202C" }}
               _focus={{ boxShadow: "none" }}
             >
-              Sport
+              Sports
             </Radio>
             <Radio
               value="games"
