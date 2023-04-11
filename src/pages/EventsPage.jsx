@@ -95,6 +95,7 @@ const EventsPage = () => {
             boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
             borderColor={"gray.400"}
             placeholder={"Search Events.."}
+            _placeholder={{ color: "gray.400" }}
             value={search}
             color={"white"}
             onChange={handleChange}
