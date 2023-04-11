@@ -13,7 +13,7 @@ export const EventFilter = ({ value, onChange }) => {
         mb={6}
         color="gray.400"
         value={value}
-        borderRadius={20}
+        borderRadius={25}
       >
         <Stack>
           <Flex gap={8}>
