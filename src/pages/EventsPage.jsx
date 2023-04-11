@@ -15,6 +15,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
 import { AddEvent } from "./AddEvent";
 import { useState } from "react";
+import { EventFilter } from "../components/EventFilter";
 
 const loader = async () => {
   const [eventsResponse, categoriesResponse] = await Promise.all([
@@ -90,12 +91,15 @@ const EventsPage = () => {
       <Center>
         <Box mb={"60px"} mt={"30px"} width={"50%"}>
           <Input
-            background={"gray.100"}
+            bgGradient="linear(to-r, rgba(26, 32, 44, 0.7), rgba(26, 32, 44, 0.85))"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
             borderColor={"gray.400"}
             placeholder={"Search Events.."}
             value={search}
+            color={"white"}
             onChange={handleChange}
           ></Input>
+          <EventFilter />
         </Box>
       </Center>
       <List spacing="6">

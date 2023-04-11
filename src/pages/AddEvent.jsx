@@ -66,7 +66,15 @@ export const AddEvent = () => {
         </Heading>
       </Center>
       <Center>
-        <Button onClick={onOpen} mb="4" colorScheme="teal">
+        <Button
+          onClick={onOpen}
+          mb="4"
+          colorScheme="teal"
+          _hover={{
+            bgGradient:
+              "linear(to-r, rgba(44, 32, 44, 0.6), rgba(26, 32, 44, 0.6))",
+          }}
+        >
           Add Event
         </Button>
       </Center>
