@@ -91,6 +91,7 @@ const EventsPage = () => {
         <Box mb={"60px"} mt={"30px"} width={"50%"}>
           <Input
             background={"gray.100"}
+            borderColor={"gray.400"}
             placeholder={"Search Events.."}
             value={search}
             onChange={handleChange}
