@@ -4,6 +4,8 @@ import {
   Image,
   List,
   ListItem,
+  Input,
+  Center,
   Tag,
   Text,
   Flex,
@@ -12,6 +14,7 @@ import {
 import { Link, useLoaderData } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
 import { AddEvent } from "./AddEvent";
+import { useState } from "react";
 
 export const loader = async () => {
   const events = await fetch("http://localhost:3000/events");
@@ -22,12 +25,27 @@ export const loader = async () => {
 
 export const EventsPage = () => {
   const { events, categories } = useLoaderData();
+  const { search, setSearch } = useState("");
+
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
 
   return (
     <Box p="6">
       <Heading as="h1" size="xl" mb="6">
         Events List
       </Heading>
+      <Center>
+        <Box mb={"60px"} mt={"30px"} width={"50%"}>
+          <Input
+            placeholder={"Search Events.."}
+            value={search}
+            onChange={handleChange}
+          ></Input>
+        </Box>
+      </Center>
+
       <List spacing="6">
         {events.map((event) => (
           <List
