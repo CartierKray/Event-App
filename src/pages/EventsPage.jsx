@@ -2,7 +2,6 @@ import {
   Box,
   Heading,
   Image,
-  Link,
   List,
   ListItem,
   Tag,
@@ -10,7 +9,7 @@ import {
   Flex,
   TagLeftIcon,
 } from "@chakra-ui/react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
 import { AddEvent } from "./AddEvent";
 
