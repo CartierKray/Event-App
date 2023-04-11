@@ -93,7 +93,7 @@ const EventsPage = () => {
             placeholder={"Search Events.."}
             value={search}
             onChange={handleChange}
-          />
+          ></Input>
         </Box>
       </Center>
       <List spacing="6">
