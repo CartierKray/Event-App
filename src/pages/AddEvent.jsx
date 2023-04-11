@@ -62,7 +62,7 @@ export const AddEvent = () => {
     <Box p={"6"}>
       <Center>
         <Heading as="h1" size="xl" mb="6">
-          Add Your Event
+          Add Your Event Here
         </Heading>
       </Center>
       <Center>
