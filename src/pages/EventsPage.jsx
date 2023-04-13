@@ -187,7 +187,8 @@ const EventsPage = () => {
                     _checked={{ bg: "white", color: "#1A202C" }}
                     _focus={{ boxShadow: "none" }}
                   >
-                    {category.name}
+                    {category.name.charAt(0).toUpperCase() +
+                      category.name.slice(1)}
                   </Radio>
                 ))}
               </Flex>
