@@ -8,7 +8,6 @@ export const EventFilter = ({ value, onChange }) => {
         boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
         borderColor={"gray.400"}
         p={4}
-        width={"125%"}
         mt={6}
         mb={6}
         color="gray.400"
