@@ -100,6 +100,7 @@ const EventsPage = () => {
             color={"white"}
             onChange={handleChange}
           ></Input>
+
           <EventFilter />
         </Box>
       </Center>

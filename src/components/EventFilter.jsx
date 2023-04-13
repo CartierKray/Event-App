@@ -1,6 +1,6 @@
 import { RadioGroup, Stack, Radio, Flex, Text, Center } from "@chakra-ui/react";
 
-export const EventFilter = ({ value, onChange }) => {
+export const EventFilter = () => {
   return (
     <Center>
       <RadioGroup
@@ -11,7 +11,6 @@ export const EventFilter = ({ value, onChange }) => {
         mt={6}
         mb={6}
         color="gray.400"
-        value={value}
         borderRadius={25}
       >
         <Stack>
@@ -20,23 +19,20 @@ export const EventFilter = ({ value, onChange }) => {
             <Radio
               fontWeight={700}
               value="all"
-              onChange={onChange}
               _checked={{ bg: "white", color: "#1A202C" }}
               _focus={{ boxShadow: "none" }}
             >
               All
             </Radio>
             <Radio
-              value="sport"
-              onChange={onChange}
+              value="1"
               _checked={{ bg: "white", color: "#1A202C" }}
               _focus={{ boxShadow: "none" }}
             >
               Sports
             </Radio>
             <Radio
-              value="games"
-              onChange={onChange}
+              value="2"
               _checked={{ bg: "white", color: "#1A202C" }}
               _focus={{ boxShadow: "none" }}
             >
