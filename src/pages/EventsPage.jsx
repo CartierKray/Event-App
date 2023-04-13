@@ -10,12 +10,14 @@ import {
   Flex,
   TagLeftIcon,
   ListItem,
+  Radio,
+  RadioGroup,
+  Stack,
 } from "@chakra-ui/react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
 import { AddEvent } from "./AddEvent";
 import { useState } from "react";
-import { EventFilter } from "../components/EventFilter";
 
 const loader = async () => {
   const [eventsResponse, categoriesResponse] = await Promise.all([
@@ -71,17 +73,72 @@ const EventListItem = ({ event, categories }) => {
   );
 };
 
+export const EventFilter = () => {
+  return (
+    <Center>
+      <RadioGroup
+        bgGradient="linear(to-r, rgba(16, 28, 37, 0.6), rgba(12, 19, 28, 0.90))"
+        boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
+        borderColor={"gray.400"}
+        padding={4}
+        marginTop={6}
+        marginBottom={6}
+        color="gray.400"
+        borderRadius={25}
+      >
+        <Stack>
+          <Flex gap={8}>
+            <Text>Filter: </Text>
+            <Radio
+              fontWeight={700}
+              value="all"
+              _checked={{ bg: "white", color: "#1A202C" }}
+              _focus={{ boxShadow: "none" }}
+            >
+              All
+            </Radio>
+            <Radio
+              value="1"
+              _checked={{ bg: "white", color: "#1A202C" }}
+              _focus={{ boxShadow: "none" }}
+            >
+              Sports
+            </Radio>
+            <Radio
+              value="2"
+              _checked={{ bg: "white", color: "#1A202C" }}
+              _focus={{ boxShadow: "none" }}
+            >
+              Games
+            </Radio>
+          </Flex>
+        </Stack>
+      </RadioGroup>
+    </Center>
+  );
+};
+
 const EventsPage = () => {
   const { events, categories } = useLoaderData();
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
 
-  const filteredEvents = events.filter((event) =>
-    event.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value);
+  };
+
+  const filteredEvents = events
+    .filter((event) => event.title.toLowerCase().includes(search.toLowerCase()))
+    .filter((event) => {
+      if (selectedCategory === "all") {
+        return true;
+      }
+      return event.categoryIds.includes(parseInt(selectedCategory));
+    });
 
   return (
     <Box p="6">
@@ -99,9 +156,43 @@ const EventsPage = () => {
             value={search}
             color={"white"}
             onChange={handleChange}
-          ></Input>
-
-          <EventFilter />
+          />
+          <RadioGroup
+            bgGradient="linear(to-r, rgba(16, 28, 37, 0.6), rgba(12, 19, 28, 0.90))"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
+            borderColor={"gray.400"}
+            padding={4}
+            marginTop={6}
+            marginBottom={6}
+            color="gray.400"
+            borderRadius={25}
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            <Stack>
+              <Flex gap={2}>
+                <Text>Filter:</Text>
+                <Radio
+                  fontWeight={700}
+                  value="all"
+                  _checked={{ bg: "white", color: "#1A202C" }}
+                  _focus={{ boxShadow: "none" }}
+                >
+                  All
+                </Radio>
+                {categories.map((category) => (
+                  <Radio
+                    key={category.id}
+                    value={category.id.toString()}
+                    _checked={{ bg: "white", color: "#1A202C" }}
+                    _focus={{ boxShadow: "none" }}
+                  >
+                    {category.name}
+                  </Radio>
+                ))}
+              </Flex>
+            </Stack>
+          </RadioGroup>
         </Box>
       </Center>
       <List spacing="6">
