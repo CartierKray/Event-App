@@ -3,13 +3,13 @@ import {
   Heading,
   Image,
   List,
-  ListItem,
   Input,
   Center,
   Tag,
   Text,
   Flex,
   TagLeftIcon,
+  ListItem,
 } from "@chakra-ui/react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
