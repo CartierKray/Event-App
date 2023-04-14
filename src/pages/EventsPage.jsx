@@ -73,51 +73,6 @@ const EventListItem = ({ event, categories }) => {
   );
 };
 
-export const EventFilter = () => {
-  return (
-    <Center>
-      <RadioGroup
-        bgGradient="linear(to-r, rgba(16, 28, 37, 0.6), rgba(12, 19, 28, 0.90))"
-        boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
-        borderColor={"gray.400"}
-        padding={4}
-        marginTop={6}
-        marginBottom={6}
-        color="gray.400"
-        borderRadius={25}
-      >
-        <Stack>
-          <Flex gap={8}>
-            <Text>Filter: </Text>
-            <Radio
-              fontWeight={700}
-              value="all"
-              _checked={{ bg: "white", color: "#1A202C" }}
-              _focus={{ boxShadow: "none" }}
-            >
-              All
-            </Radio>
-            <Radio
-              value="1"
-              _checked={{ bg: "white", color: "#1A202C" }}
-              _focus={{ boxShadow: "none" }}
-            >
-              Sports
-            </Radio>
-            <Radio
-              value="2"
-              _checked={{ bg: "white", color: "#1A202C" }}
-              _focus={{ boxShadow: "none" }}
-            >
-              Games
-            </Radio>
-          </Flex>
-        </Stack>
-      </RadioGroup>
-    </Center>
-  );
-};
-
 const EventsPage = () => {
   const { events, categories } = useLoaderData();
   const [search, setSearch] = useState("");
@@ -148,7 +103,7 @@ const EventsPage = () => {
       <Center>
         <Box mb={"60px"} mt={"30px"} width={"50%"}>
           <Input
-            bgGradient="linear(to-r, rgba(26, 32, 44, 0.6), rgba(26, 32, 44, 0.85))"
+            bgGradient="linear(to-r, rgba(26, 32, 44, 0.6), rgba(26, 32, 44, 0.90))"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
             borderColor={"gray.400"}
             placeholder={"Search Events.."}
@@ -158,7 +113,7 @@ const EventsPage = () => {
             onChange={handleChange}
           />
           <RadioGroup
-            bgGradient="linear(to-r, rgba(16, 28, 37, 0.6), rgba(12, 19, 28, 0.90))"
+            bgGradient="linear(to-r, rgba(16, 28, 37, 0.6), rgba(12, 19, 28, 0.85))"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
             borderColor={"gray.400"}
             padding={4}
