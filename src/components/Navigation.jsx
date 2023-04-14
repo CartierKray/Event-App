@@ -7,9 +7,10 @@ export const Navigation = () => {
     <Box
       as="nav"
       bg="bg-surface"
-      boxShadow="xl"
+      boxShadow="base"
       h={"50px"}
       backgroundColor={"#888870"}
+      style={{ position: "sticky", top: 0 }}
     >
       <Flex justifyContent={"space-evenly"} padding={"10px"}>
         <List>
