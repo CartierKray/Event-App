@@ -9,7 +9,7 @@ export const Navigation = () => {
       bg="bg-surface"
       boxShadow="md"
       h={"50px"}
-      backgroundColor={"#888870"}
+      backgroundColor={"#948880"}
       style={{ position: "sticky", top: 0, zIndex: 1 }}
     >
       <Flex justifyContent={"space-evenly"} padding={"8px"}>
@@ -20,7 +20,7 @@ export const Navigation = () => {
               fontFamily={"Poppins"}
               fontSize={"20px"}
               fontWeight={"bold"}
-              _hover={{ color: "black" }}
+              _hover={{ color: "gray.600" }}
             >
               Events List
             </Text>
@@ -34,7 +34,7 @@ export const Navigation = () => {
               fontFamily={"Poppins"}
               fontSize={"20px"}
               fontWeight={"bold"}
-              _hover={{ color: "black" }}
+              _hover={{ color: "gray.600" }}
             >
               Event
             </Text>
