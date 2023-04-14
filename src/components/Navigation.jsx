@@ -7,7 +7,7 @@ export const Navigation = () => {
     <Box
       as="nav"
       bg="bg-surface"
-      boxShadow="base"
+      boxShadow="md"
       h={"50px"}
       backgroundColor={"#888870"}
       style={{ position: "sticky", top: 0, zIndex: 1 }}
