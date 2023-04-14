@@ -26,7 +26,7 @@ export const EventPage = () => {
         Event
       </Heading>
       <Box>
-        <Image src={event.image} alt={event.title} mb="4" borderRadius="md" />
+        <Image src={event.image} mb="4" borderRadius="md" />
         <Heading as="h2" size="md">
           {event.title}
         </Heading>

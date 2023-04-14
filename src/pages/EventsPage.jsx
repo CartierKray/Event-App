@@ -36,7 +36,7 @@ const loader = async () => {
 const EventListItem = ({ event, categories }) => {
   return (
     <List key={event.id} borderBottomWidth="1px" borderColor="gray.200" pb="6">
-      <Image src={event.image} alt={event.title} mb="4" borderRadius="md" />
+      <Image src={event.image} mb="4" borderRadius="md" />
       <Link to={`/event/${event.id}`}>
         <Heading as="h2" size="md" _hover={{ color: "teal.300" }}>
           {event.title}
