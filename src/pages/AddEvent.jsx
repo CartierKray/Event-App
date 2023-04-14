@@ -69,10 +69,12 @@ export const AddEvent = () => {
         <Button
           onClick={onOpen}
           mb="4"
-          colorScheme="teal"
+          color="white"
+          backgroundColor={"limegreen"}
           _hover={{
+            color: "white.100",
             bgGradient:
-              "linear(to-r, rgba(44, 32, 44, 0.6), rgba(26, 32, 44, 0.6))",
+              "linear(to-r, rgba(12, 1, 44, 0.2), rgba(26, 32, 24, 0.7))",
           }}
         >
           Add Event
