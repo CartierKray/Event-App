@@ -10,9 +10,9 @@ export const Navigation = () => {
       boxShadow="base"
       h={"50px"}
       backgroundColor={"#888870"}
-      style={{ position: "sticky", top: 0 }}
+      style={{ position: "sticky", top: 0, zIndex: 1 }}
     >
-      <Flex justifyContent={"space-evenly"} padding={"10px"}>
+      <Flex justifyContent={"space-evenly"} padding={"8px"}>
         <List>
           <Link to="/">
             <Text
