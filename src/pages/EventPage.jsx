@@ -47,7 +47,7 @@ export const EventPage = () => {
 
   const handleEditSubmit = (event) => {
     event.preventDefault();
-    // Implement logic to update event details here, e.g. via a fetch request to the back-end
+
     fetch(`http://localhost:3000/events/${updatedEvent.id}`, {
       method: "PUT",
       headers: {
@@ -156,9 +156,7 @@ export const EventPage = () => {
                   <Input
                     type="datetime-local"
                     name="startTime"
-                    value={new Date(updatedEvent.startTime)
-                      .toISOString()
-                      .substr(0, 16)}
+                    value={new Date(updatedEvent.startTime).toISOString()}
                     onChange={handleInputChange}
                   />
                 </FormControl>
@@ -167,9 +165,7 @@ export const EventPage = () => {
                   <Input
                     type="datetime-local"
                     name="endTime"
-                    value={new Date(updatedEvent.endTime)
-                      .toISOString()
-                      .substr(0, 16)}
+                    value={new Date(updatedEvent.endTime).toISOString()}
                     onChange={handleInputChange}
                   />
                 </FormControl>
