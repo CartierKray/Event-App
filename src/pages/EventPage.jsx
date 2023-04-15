@@ -18,6 +18,8 @@ import {
   FormLabel,
   Input,
   Divider,
+  useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import { useLoaderData } from "react-router-dom";
@@ -34,9 +36,11 @@ export const loader = async ({ params }) => {
 };
 
 export const EventPage = () => {
+  const { onClose, reset } = useDisclosure();
   const { event, categories } = useLoaderData();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [updatedEvent, setUpdatedEvent] = useState(event);
+  const toast = useToast();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -64,6 +68,16 @@ export const EventPage = () => {
         console.error("Error:", error);
       });
     setIsEditModalOpen(false);
+
+    toast({
+      title: "Event Edited Succesfully.",
+      status: "success",
+      duration: 5000,
+      position: "top-right",
+      isClosable: true,
+    });
+    onClose();
+    reset();
   };
 
   return (
