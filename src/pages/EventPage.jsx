@@ -17,6 +17,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Divider,
 } from "@chakra-ui/react";
 
 import { useLoaderData } from "react-router-dom";
@@ -66,7 +67,7 @@ export const EventPage = () => {
   };
 
   return (
-    <Box p={"6"}>
+    <Box p={"6"} minHeight={"100vh"}>
       <Flex justifyContent={"space-between"}>
         <Heading as="h1" size="xl" mb="6">
           Event
@@ -113,7 +114,8 @@ export const EventPage = () => {
               ))}
           </Flex>
         </Flex>
-
+        <br />
+        <Divider />
         <Modal
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
