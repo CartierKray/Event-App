@@ -74,9 +74,9 @@ export const EventPage = () => {
         </Heading>
         <Button
           color={"white"}
-          backgroundColor={"teal.300"}
+          backgroundColor={"limegreen"}
           onClick={() => setIsEditModalOpen(true)}
-          _hover={{ bg: "limegreen" }}
+          _hover={{ bg: "teal.300" }}
         >
           Edit
         </Button>
@@ -104,7 +104,7 @@ export const EventPage = () => {
               .filter((category) => event.categoryIds.includes(category.id))
               .map((category) => (
                 <Box key={category.id}>
-                  <Tag color="teal.700" fontSize="sm" bg="teal.200">
+                  <Tag color="white" fontSize="sm" bg="limegreen">
                     <TagLeftIcon as={AiFillTags}></TagLeftIcon>
                     <Text textTransform={"uppercase"} fontSize={"10"}>
                       {category.name}
