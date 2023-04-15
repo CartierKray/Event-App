@@ -15,7 +15,11 @@ import { AiFillTags } from "react-icons/ai";
 export const loader = async ({ params }) => {
   const event = await fetch(`http://localhost:3000/events/${params.eventId}`);
   const categories = await fetch("http://localhost:3000/categories");
-  return { event: await event.json(), categories: await categories.json() };
+
+  return {
+    event: await event.json(),
+    categories: await categories.json(),
+  };
 };
 
 export const EventPage = () => {
