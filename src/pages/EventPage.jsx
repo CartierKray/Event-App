@@ -71,7 +71,14 @@ export const EventPage = () => {
         <Heading as="h1" size="xl" mb="6">
           Event
         </Heading>
-        <Button onClick={() => setIsEditModalOpen(true)}>Edit</Button>
+        <Button
+          color={"white"}
+          backgroundColor={"teal.300"}
+          onClick={() => setIsEditModalOpen(true)}
+          _hover={{ bg: "limegreen" }}
+        >
+          Edit
+        </Button>
       </Flex>
 
       <Box>
@@ -181,7 +188,14 @@ export const EventPage = () => {
                     ))}
                   </select>
                 </FormControl>
-                <Button type="submit">Save</Button>
+                <Button
+                  type="submit"
+                  backgroundColor={"teal.300"}
+                  color={"white"}
+                  _hover={{ bg: "limegreen" }}
+                >
+                  Save
+                </Button>
               </form>
             </ModalBody>
           </ModalContent>
