@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Heading,
   Box,
@@ -7,6 +7,16 @@ import {
   Flex,
   Tag,
   TagLeftIcon,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  FormControl,
+  FormLabel,
+  Input,
 } from "@chakra-ui/react";
 
 import { useLoaderData } from "react-router-dom";
@@ -24,11 +34,46 @@ export const loader = async ({ params }) => {
 
 export const EventPage = () => {
   const { event, categories } = useLoaderData();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [updatedEvent, setUpdatedEvent] = useState(event);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUpdatedEvent((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleEditSubmit = (event) => {
+    event.preventDefault();
+    // Implement logic to update event details here, e.g. via a fetch request to the back-end
+    fetch(`http://localhost:3000/events/${updatedEvent.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedEvent),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    setIsEditModalOpen(false);
+  };
+
   return (
     <Box p={"6"}>
-      <Heading as="h1" size="xl" mb="6">
-        Event
-      </Heading>
+      <Flex justifyContent={"space-between"}>
+        <Heading as="h1" size="xl" mb="6">
+          Event
+        </Heading>
+        <Button onClick={() => setIsEditModalOpen(true)}>Edit</Button>
+      </Flex>
+
       <Box>
         <Image src={event.image} mb="4" borderRadius="md" />
         <Heading as="h2" size="md">
@@ -61,7 +106,89 @@ export const EventPage = () => {
               ))}
           </Flex>
         </Flex>
+
+        <Modal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Edit Event</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <form onSubmit={handleEditSubmit}>
+                <FormControl mb="4">
+                  <FormLabel>Title</FormLabel>
+                  <Input
+                    type="text"
+                    name="title"
+                    value={updatedEvent.title}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>
+                <FormControl mb="4">
+                  <FormLabel>Description</FormLabel>
+                  <Input
+                    type="text"
+                    name="description"
+                    value={updatedEvent.description}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>
+                <FormControl mb="4">
+                  <FormLabel>Location</FormLabel>
+                  <Input
+                    type="text"
+                    name="location"
+                    value={updatedEvent.location}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>
+                <FormControl mb="4">
+                  <FormLabel>Start Time</FormLabel>
+                  <Input
+                    type="datetime-local"
+                    name="startTime"
+                    value={new Date(updatedEvent.startTime)
+                      .toISOString()
+                      .substr(0, 16)}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>
+                <FormControl mb="4">
+                  <FormLabel>End Time</FormLabel>
+                  <Input
+                    type="datetime-local"
+                    name="endTime"
+                    value={new Date(updatedEvent.endTime)
+                      .toISOString()
+                      .substr(0, 16)}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>
+                <FormControl mb="4">
+                  <FormLabel>Category</FormLabel>
+                  <select
+                    name="categoryIds"
+                    multiple
+                    value={updatedEvent.categoryIds}
+                    onChange={handleInputChange}
+                  >
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </FormControl>
+                <Button type="submit">Save</Button>
+              </form>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Box>
     </Box>
   );
 };
+
+export default EventPage;
