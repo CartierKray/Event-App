@@ -76,6 +76,7 @@ export const EventPage = () => {
       position: "top-right",
       isClosable: true,
     });
+
     onClose();
     reset();
   };
@@ -95,7 +96,6 @@ export const EventPage = () => {
           Edit
         </Button>
       </Flex>
-
       <Box>
         <Image src={event.image} mb="4" borderRadius="md" />
         <Heading as="h2" size="md">
@@ -130,6 +130,7 @@ export const EventPage = () => {
         </Flex>
         <br />
         <Divider />
+
         <Modal
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
