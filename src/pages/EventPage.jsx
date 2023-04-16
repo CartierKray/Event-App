@@ -83,7 +83,8 @@ export const EventPage = () => {
   };
 
   const handleDeleteClick = () => {
-    if (window.confirm("Are you sure you want to delete this event?")) {
+    if (window.confirm("Do you want to delete this event?")) {
+      window.confirm("Are you 100% Sure? ");
       fetch(`http://localhost:3000/events/${event.id}`, {
         method: "DELETE",
       })
