@@ -6,6 +6,7 @@ import {
   Image,
   Flex,
   Tag,
+  Center,
   TagLeftIcon,
   Button,
   Modal,
@@ -22,7 +23,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
 
 export const loader = async ({ params }) => {
@@ -41,6 +42,7 @@ export const EventPage = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [updatedEvent, setUpdatedEvent] = useState(event);
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -76,26 +78,37 @@ export const EventPage = () => {
       position: "top-right",
       isClosable: true,
     });
-
     onClose();
     reset();
   };
 
+  const handleDeleteClick = () => {
+    if (window.confirm("Are you sure you want to delete this event?")) {
+      fetch(`http://localhost:3000/events/${event.id}`, {
+        method: "DELETE",
+      })
+        .then(() => {
+          toast({
+            title: "Event deleted successfully.",
+            status: "success",
+            duration: 5000,
+            position: "top-right",
+            isClosable: true,
+          });
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  };
+
   return (
     <Box p={"6"} minHeight={"100vh"}>
-      <Flex justifyContent={"space-between"}>
-        <Heading as="h1" size="xl" mb="6">
-          Event
-        </Heading>
-        <Button
-          color={"white"}
-          backgroundColor={"limegreen"}
-          onClick={() => setIsEditModalOpen(true)}
-          _hover={{ bg: "teal.300" }}
-        >
-          Edit
-        </Button>
-      </Flex>
+      <Heading as="h1" size="xl" mb="6">
+        Event
+      </Heading>
+
       <Box>
         <Image src={event.image} mb="4" borderRadius="md" />
         <Heading as="h2" size="md">
@@ -130,6 +143,27 @@ export const EventPage = () => {
         </Flex>
         <br />
         <Divider />
+        <br />
+        <Center>
+          <Flex gap={3}>
+            <Button
+              color={"white"}
+              backgroundColor={"teal.300"}
+              onClick={() => setIsEditModalOpen(true)}
+              _hover={{ bg: "limegreen" }}
+            >
+              Edit
+            </Button>
+            <Button
+              color="white"
+              backgroundColor={"red"}
+              onClick={handleDeleteClick}
+              _hover={{ color: "black" }}
+            >
+              Delete
+            </Button>
+          </Flex>
+        </Center>
 
         <Modal
           isOpen={isEditModalOpen}
