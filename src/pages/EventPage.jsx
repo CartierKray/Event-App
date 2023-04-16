@@ -109,7 +109,6 @@ export const EventPage = () => {
       <Heading as="h1" size="xl" mb="6">
         Event
       </Heading>
-
       <Box>
         <Image src={event.image} mb="4" borderRadius="md" />
         <Heading as="h2" size="md">
@@ -153,7 +152,7 @@ export const EventPage = () => {
               onClick={() => setIsEditModalOpen(true)}
               _hover={{ bg: "limegreen" }}
             >
-              Edit
+              Edit Event
             </Button>
             <Button
               color="white"
@@ -161,7 +160,7 @@ export const EventPage = () => {
               onClick={handleDeleteClick}
               _hover={{ color: "black" }}
             >
-              Delete
+              Delete Event
             </Button>
           </Flex>
         </Center>
