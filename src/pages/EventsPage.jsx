@@ -59,7 +59,7 @@ const EventListItem = ({ event, categories }) => {
             .filter((category) => event.categoryIds.includes(category.id))
             .map((category) => (
               <Box key={category.id}>
-                <Tag color="white" fontSize="sm" bg="limegreen">
+                <Tag color="white" fontSize="sm" bg="blue.400">
                   <TagLeftIcon as={AiFillTags}></TagLeftIcon>
                   <Text textTransform={"uppercase"} fontSize={"10"}>
                     {category.name}

@@ -131,7 +131,7 @@ export const EventPage = () => {
               .filter((category) => event.categoryIds.includes(category.id))
               .map((category) => (
                 <Box key={category.id}>
-                  <Tag color="white" fontSize="sm" bg="limegreen">
+                  <Tag color="white" fontSize="sm" bg="blue.400">
                     <TagLeftIcon as={AiFillTags}></TagLeftIcon>
                     <Text textTransform={"uppercase"} fontSize={"10"}>
                       {category.name}
@@ -207,7 +207,7 @@ export const EventPage = () => {
                   <Input
                     type="datetime-local"
                     name="startTime"
-                    value={new Date(updatedEvent.startTime).toISOString()}
+                    value={new Date(updatedEvent.startTime)}
                     onChange={handleInputChange}
                   />
                 </FormControl>
@@ -216,7 +216,7 @@ export const EventPage = () => {
                   <Input
                     type="datetime-local"
                     name="endTime"
-                    value={new Date(updatedEvent.endTime).toISOString()}
+                    value={new Date(updatedEvent.endTime)}
                     onChange={handleInputChange}
                   />
                 </FormControl>
