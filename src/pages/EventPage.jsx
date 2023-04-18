@@ -40,7 +40,11 @@ export const EventPage = () => {
   const { onClose, reset } = useDisclosure();
   const { event, categories } = useLoaderData();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [updatedEvent, setUpdatedEvent] = useState(event);
+  const [updatedEvent, setUpdatedEvent] = useState({
+    ...event,
+    startTime: new Date(event.startTime),
+    endTime: new Date(event.endTime),
+  });
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -207,7 +211,7 @@ export const EventPage = () => {
                   <Input
                     type="datetime-local"
                     name="startTime"
-                    value={new Date(updatedEvent.startTime)}
+                    value={updatedEvent.startTime}
                     onChange={handleInputChange}
                   />
                 </FormControl>
@@ -216,7 +220,7 @@ export const EventPage = () => {
                   <Input
                     type="datetime-local"
                     name="endTime"
-                    value={new Date(updatedEvent.endTime)}
+                    value={updatedEvent.endTime}
                     onChange={handleInputChange}
                   />
                 </FormControl>
