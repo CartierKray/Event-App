@@ -69,21 +69,27 @@ export const EventPage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        toast({
+          title: "Event Edited Successfully.",
+          status: "success",
+          duration: 5000,
+          position: "top-right",
+          isClosable: true,
+        });
+        onClose();
+        reset();
       })
       .catch((error) => {
         console.error("Error:", error);
+        toast({
+          title: "Error Event Not Edited. Try Again.",
+          status: "error",
+          duration: 5000,
+          position: "top-right",
+          isClosable: true,
+        });
       });
     setIsEditModalOpen(false);
-
-    toast({
-      title: "Event Edited Succesfully.",
-      status: "success",
-      duration: 5000,
-      position: "top-right",
-      isClosable: true,
-    });
-    onClose();
-    reset();
   };
 
   const handleDeleteClick = () => {
@@ -104,6 +110,13 @@ export const EventPage = () => {
         })
         .catch((error) => {
           console.error("Error:", error);
+          toast({
+            title: "Error Event Not Deleted. Try Again.",
+            status: "error",
+            duration: 5000,
+            position: "top-right",
+            isClosable: true,
+          });
         });
     }
   };
