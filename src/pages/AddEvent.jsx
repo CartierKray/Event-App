@@ -20,6 +20,7 @@ import {
 export const AddEvent = () => {
   const { isOpen, onOpen, onClose, reset } = useDisclosure();
   const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -35,6 +36,7 @@ export const AddEvent = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        image,
         title,
         description,
         location,
@@ -87,6 +89,14 @@ export const AddEvent = () => {
           <ModalHeader>Add Event</ModalHeader>
           <ModalBody>
             <form onSubmit={handleSubmit}>
+              <FormControl>
+                <FormLabel>Image</FormLabel>
+                <Input
+                  type="image"
+                  value={image}
+                  onChange={(event) => setImage(event.target.value)}
+                />
+              </FormControl>
               <FormControl>
                 <FormLabel>Title</FormLabel>
                 <Input

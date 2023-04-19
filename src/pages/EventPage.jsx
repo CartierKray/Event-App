@@ -37,7 +37,7 @@ export const loader = async ({ params }) => {
 };
 
 export const EventPage = () => {
-  const { onClose, reset } = useDisclosure();
+  const { onClose } = useDisclosure();
   const { event, categories } = useLoaderData();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [updatedEvent, setUpdatedEvent] = useState({
@@ -77,7 +77,6 @@ export const EventPage = () => {
           isClosable: true,
         });
         onClose();
-        reset();
       })
       .catch((error) => {
         console.error("Error:", error);
