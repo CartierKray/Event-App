@@ -128,6 +128,9 @@ export const EventPage = () => {
         <Text color="gray.500" fontSize="sm" mt="1">
           End at: {new Date(event.endTime).toLocaleString()}
         </Text>
+        <Text color="gray.500" fontSize="sm" mt="1">
+          Created By: {event.createdBy}
+        </Text>
         <Flex gap={2} color="gray.500" fontSize="sm" mt="3">
           Category:
           <Flex gap={2}>
