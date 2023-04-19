@@ -21,7 +21,6 @@ const router = createBrowserRouter([
         path: "/event/:eventId",
         element: <EventPage />,
         loader: eventLoader,
-        // action: addComment,
       },
       {
         path: "/add/event",
