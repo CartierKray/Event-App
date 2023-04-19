@@ -94,6 +94,7 @@ export const AddEvent = () => {
                 <Input
                   type="image"
                   value={image}
+                  src="image"
                   onChange={(event) => setImage(event.target.value)}
                 />
               </FormControl>
