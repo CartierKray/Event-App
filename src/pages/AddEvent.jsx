@@ -92,9 +92,9 @@ export const AddEvent = () => {
               <FormControl>
                 <FormLabel>Image</FormLabel>
                 <Input
-                  type="image"
+                  type="text"
                   value={image}
-                  src="image"
+                  placeholder={"Insert link.."}
                   onChange={(event) => setImage(event.target.value)}
                 />
               </FormControl>
