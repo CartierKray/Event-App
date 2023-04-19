@@ -52,9 +52,13 @@ export const AddEvent = () => {
     toast({
       title: "Event Added Succesfully.",
       status: "success",
-      duration: 5000,
+      duration: 3000,
       position: "top-right",
       isClosable: true,
+      onCloseComplete: () => {
+        onClose();
+        window.location.reload();
+      },
     });
     onClose();
     reset();

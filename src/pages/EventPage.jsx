@@ -72,20 +72,27 @@ export const EventPage = () => {
         toast({
           title: "Event Edited Successfully.",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           position: "top-right",
           isClosable: true,
+          onCloseComplete: () => {
+            onClose();
+            window.location.reload();
+          },
         });
-        onClose();
       })
       .catch((error) => {
         console.error("Error:", error);
         toast({
           title: "Error Event Not Edited. Try Again.",
           status: "error",
-          duration: 5000,
+          duration: 3000,
           position: "top-right",
           isClosable: true,
+          onCloseComplete: () => {
+            onClose();
+            window.location.reload();
+          },
         });
       });
     setIsEditModalOpen(false);
@@ -101,7 +108,7 @@ export const EventPage = () => {
           toast({
             title: "Event deleted successfully.",
             status: "success",
-            duration: 5000,
+            duration: 3000,
             position: "top-right",
             isClosable: true,
           });
@@ -112,7 +119,7 @@ export const EventPage = () => {
           toast({
             title: "Error Event Not Deleted. Try Again.",
             status: "error",
-            duration: 5000,
+            duration: 3000,
             position: "top-right",
             isClosable: true,
           });
