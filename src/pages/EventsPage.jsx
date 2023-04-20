@@ -96,7 +96,7 @@ const EventsPage = () => {
     });
 
   return (
-    <Box p="6">
+    <Box p="6" maxWidth={{ base: "100%", md: "680px" }} mx="auto">
       <Heading as="h1" size="xl" mb="6">
         Events List
       </Heading>

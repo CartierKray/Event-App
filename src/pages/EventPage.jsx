@@ -128,7 +128,12 @@ export const EventPage = () => {
   };
 
   return (
-    <Box p={"6"} minHeight={"100vh"}>
+    <Box
+      p={"6"}
+      minHeight={"100vh"}
+      maxWidth={{ base: "100%", md: "680px" }}
+      mx="auto"
+    >
       <Heading as="h1" size="xl" mb="6">
         Event
       </Heading>
