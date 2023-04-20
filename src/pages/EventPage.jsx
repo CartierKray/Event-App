@@ -154,6 +154,13 @@ export const EventPage = () => {
         <Text color="gray.500" fontSize="sm" mt="1">
           End at: {new Date(event.endTime).toLocaleString()}
         </Text>
+        <Image
+          src={users.find((user) => user.id === event.createdBy)?.image}
+          borderRadius={"50px"}
+          height={"100px"}
+          mt={3}
+          _hover={{ height: "200px", borderRadius: "100px" }}
+        />
         <Text
           color="gray.500"
           fontSize="sm"
@@ -163,13 +170,6 @@ export const EventPage = () => {
           Created By: &nbsp;
           {users.find((user) => user.id === event.createdBy)?.name}
         </Text>
-        <Image
-          src={users.find((user) => user.id === event.createdBy)?.image}
-          borderRadius={"50px"}
-          height={"100px"}
-          mt={3}
-          _hover={{ height: "200px", borderRadius: "100px" }}
-        />
         <Flex gap={2} color="gray.500" fontSize="sm" mt="3">
           Category:
           <Flex gap={2}>
