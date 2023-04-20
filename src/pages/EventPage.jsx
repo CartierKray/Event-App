@@ -27,10 +27,12 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AiFillTags } from "react-icons/ai";
 
 export const loader = async ({ params }) => {
+  const users = await fetch("http://localhost:3000/users");
   const event = await fetch(`http://localhost:3000/events/${params.eventId}`);
   const categories = await fetch("http://localhost:3000/categories");
 
   return {
+    users: await users.json(),
     event: await event.json(),
     categories: await categories.json(),
   };
@@ -38,7 +40,7 @@ export const loader = async ({ params }) => {
 
 export const EventPage = () => {
   const { onClose } = useDisclosure();
-  const { event, categories } = useLoaderData();
+  const { users, event, categories } = useLoaderData();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [updatedEvent, setUpdatedEvent] = useState({
     ...event,
@@ -152,9 +154,6 @@ export const EventPage = () => {
         <Text color="gray.500" fontSize="sm" mt="1">
           End at: {new Date(event.endTime).toLocaleString()}
         </Text>
-        <Text color="gray.500" fontSize="sm" mt="1">
-          Created By: {event.createdBy}
-        </Text>
         <Flex gap={2} color="gray.500" fontSize="sm" mt="3">
           Category:
           <Flex gap={2}>
@@ -172,6 +171,15 @@ export const EventPage = () => {
               ))}
           </Flex>
         </Flex>
+        <Text color="gray.500" fontSize="sm" mt="1">
+          Created By:
+          {users.find((user) => user.id === event.createdBy)?.name}
+        </Text>
+        <Image
+          src={users.find((user) => user.id === event.createdBy)?.image}
+          borderRadius={"sm"}
+        />
+
         <br />
         <Divider />
         <br />
@@ -195,7 +203,6 @@ export const EventPage = () => {
             </Button>
           </Flex>
         </Center>
-
         <Modal
           isOpen={isEditModalOpen}
           onClose={() => setIsEditModalOpen(false)}
