@@ -27,20 +27,6 @@ export const Navigation = () => {
             <ListItem borderBottomWidth="1px" borderColor="white"></ListItem>
           </Link>
         </List>
-        <List>
-          <Link to="/event/1">
-            <Text
-              color={"white"}
-              fontFamily={"Poppins"}
-              fontSize={"20px"}
-              fontWeight={"bold"}
-              _hover={{ color: "gray.600" }}
-            >
-              Event
-            </Text>
-            <ListItem borderBottomWidth="1px" borderColor="white"></ListItem>
-          </Link>
-        </List>
       </Flex>
     </Box>
   );
