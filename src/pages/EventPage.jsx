@@ -60,7 +60,6 @@ export const EventPage = () => {
 
   const handleEditSubmit = (event) => {
     event.preventDefault();
-
     fetch(`http://localhost:3000/events/${updatedEvent.id}`, {
       method: "PUT",
       headers: {
